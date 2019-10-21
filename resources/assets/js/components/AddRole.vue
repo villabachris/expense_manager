@@ -34,10 +34,12 @@
             </div>
         </div>
         </div>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#userRole">
-        Add Roles
-        </button>
+        <div class="col-md-12">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary mr-auto" data-toggle="modal" data-target="#userRole">
+            Add Roles
+            </button>
+        </div>
     </div>
 </template>
 <script>

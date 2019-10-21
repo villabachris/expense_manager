@@ -5,7 +5,9 @@
         <div class="col-md-6 h5 text-right">User Management > Roles</div>
     </div>
     <div>
-        <user-roles></user-roles>
-        <add-role></add-role>
+        <div class="container col-md-6 mt-5">
+            <user-roles></user-roles>
+            <add-role></add-role>
+        </div>
     </div>
 @endsection

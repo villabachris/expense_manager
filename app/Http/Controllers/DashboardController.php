@@ -41,5 +41,14 @@ class DashboardController extends Controller
         $role->save();
         return response()->json(['message' => 'Add Role Successful']);
     }
+    
+    // public function updateRole(Request $request)
+    // {
+    //     $role = new Role();
+    //     $role->role = $request->role;
+    //     $role->description = $request->description;
+    //     $role->save();
+    //     return response()->json(['message' => 'Add Role Successful']);
+    // }
 
 }

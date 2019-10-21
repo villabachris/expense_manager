@@ -50358,6 +50358,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -50366,8 +50401,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            roles: []
-
+            roles: [],
+            rolesUpdate: [],
+            showModal: false,
+            roleVal: function roleVal(val_id, val_role, val_desc) {
+                this.r_id = val_id;
+                this.r_role = val_role;
+                this.r_desc = val_desc;
+            }
         };
     },
 
@@ -50378,7 +50419,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.roles = response.data;
             console.log(response.data);
         });
-    }
+    },
+    methods: {}
 });
 
 /***/ }),
@@ -50389,31 +50431,188 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-8 mx-auto mt-5" }, [
-    _c("table", { staticClass: "table table-striped" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.roles, function(role) {
-          return _c("tr", { key: role.id }, [
-            _c("td", [
-              _c("a", { staticClass: "text-primary", attrs: { href: "#" } }, [
-                _vm._v(_vm._s(role.role))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(role.description))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(role.created_at))])
-          ])
-        }),
-        0
-      )
+  return _c("div", [
+    _vm.showModal
+      ? _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: { id: "role", tabindex: "-1", role: "dialog" },
+            on: {
+              close: function($event) {
+                _vm.showModal = false
+              }
+            }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "exampleModalLabel" }
+                      },
+                      [_vm._v("Update Role")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "close",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          close: function($event) {
+                            _vm.showModal = false
+                          }
+                        }
+                      },
+                      [_c("span", [_vm._v("×")])]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "hidden",
+                        id: "r_id",
+                        disabled: "",
+                        required: "",
+                        name: "id"
+                      },
+                      domProps: { value: this.r_id }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "input-group input-group-sm mb-3" },
+                      [
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            required: "",
+                            id: "r_role",
+                            name: "role"
+                          },
+                          domProps: { value: this.r_role }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "input-group input-group-sm mb-3" },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            required: "",
+                            id: "r_desc",
+                            name: "desc"
+                          },
+                          domProps: { value: this.r_desc }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Save")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            _vm.showModal = false
+                          }
+                        }
+                      },
+                      [_vm._v("close")]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", [
+      _c("table", { staticClass: "table table-striped" }, [
+        _vm._m(2),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.roles, function(role) {
+            return _c("tr", { key: role.id }, [
+              _c(
+                "td",
+                {
+                  staticClass: "btn btn-secondary",
+                  attrs: {
+                    id: "show-modal",
+                    "data-toggle": "modal",
+                    "data-target": "#role"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.showModal = true
+                      _vm.roleVal(role.id, role.role, role.description)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(role.role))]
+              ),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(role.description))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(role.created_at))])
+            ])
+          }),
+          0
+        )
+      ])
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("Display Name")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("Description")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -50499,6 +50698,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -50681,18 +50882,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        attrs: {
-          type: "button",
-          "data-toggle": "modal",
-          "data-target": "#userRole"
-        }
-      },
-      [_vm._v("\n    Add Roles\n    ")]
-    )
+    _vm._m(4)
   ])
 }
 var staticRenderFns = [
@@ -50749,6 +50939,25 @@ var staticRenderFns = [
           attrs: { type: "button", "data-dismiss": "modal" }
         },
         [_vm._v("Cancel")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary mr-auto",
+          attrs: {
+            type: "button",
+            "data-toggle": "modal",
+            "data-target": "#userRole"
+          }
+        },
+        [_vm._v("\n        Add Roles\n        ")]
       )
     ])
   }
