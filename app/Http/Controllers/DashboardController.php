@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -18,8 +19,7 @@ class DashboardController extends Controller
     public function roles()
     {
         // dd(User::all());
-        $user_roles = User::all();
-        return view('roles', compact('user_roles'));
+        return view('roles');
         // return $user_roles;
     }
     
@@ -35,13 +35,16 @@ class DashboardController extends Controller
     
     public function allUsers()
     {
-        // dd(User::all());
-        return view('users');
+        $users = User::all();
+        // dd($users);
+        // dd($users);
+        return view('users', compact('users'));
     }
     
     public function allUsersApi()
     {
-        $users = User::all();
+        $users = DB::table('roles')
+        ->rightJoin('users', 'roles.id', '=', 'users.role_id')->get();
         return response()->json($users);
     }
     

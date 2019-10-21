@@ -17,6 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/users', 'DashboardController@users');
+Route::get('/all-users', 'DashboardController@allUsersApi');
 Route::post('/add-role', 'DashboardController@addRole');
 Route::put('/update-role/{id}', 'DashboardController@updateRole');
-Route::get('/all-users', 'DashboardController@allUsersApi');

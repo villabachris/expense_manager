@@ -6,7 +6,7 @@
     </div>
     <div>
         <div class="container col-md-6 mt-5">
-            <users></users>
+        <all-users></all-users>
         </div>
     </div>
 @endsection

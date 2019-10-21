@@ -12,7 +12,7 @@ class User extends Authenticatable
     use Notifiable;
     public function roles()
     {
-        return $this->belongsTo('App\Role','id','id');   
+        return $this->belongsTo('App\Role');   
     }
     /**
      * The attributes that are mass assignable.
