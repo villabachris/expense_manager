@@ -1,12 +1,12 @@
 <template>
 <div>
     <!-- Modal -->
-    <div v-if="showModal" @close="showModal=false" class="modal fade" id="role" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div v-if="showModal"  class="modal fade" id="role" tabindex="-1" role="dialog">
+    <div class="modal-dialog"  role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Update Role</h5>
-            <button type="button" class="close" data-dismiss="modal" @close="showModal=false">
+            <button type="button" class="close" @click="showModal=false" data-dismiss="modal">
             <span>&times;</span>
             </button>
         </div>
@@ -27,7 +27,7 @@
                 </div>
         </div>
         <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-primary" @click="roleUpdate()">Update</button>
                 <button type="button" class="btn btn-primary" @click="showModal=false" data-dismiss="modal">close</button>
         </div>
         </div>
@@ -43,7 +43,7 @@
             </tr>
             <tbody>
                 <tr v-for="role in roles" v-bind:key="role.id">
-                    <td id="show-modal" @click="showModal=true; roleVal(role.id, role.role, role.description)" class="btn btn-secondary" data-toggle="modal" data-target="#role">{{ role.role }}</td>
+                    <td id="show-modal" class="btn" :class=" role.role == 'administrator' ? 'disabled' : '' " v-on:click="role.role == 'administrator' ? showModal=false : showModal=true;roleVal(role.id, role.role, role.description)"   data-toggle="modal" data-target="#role">{{ role.role }}</td>
                     <td>{{ role.description }}</td>
                     <td>{{ role.created_at }}</td>
                 </tr>
@@ -79,7 +79,29 @@ export default {
         })
     },
     methods: {
-        
+        roleUpdate(){
+            let r_id = document.getElementById('r_id').value
+            let r_role = document.getElementById('r_role').value
+            let r_desc = document.getElementById('r_desc').value
+
+            // alert(r_id);
+            axios.put('http://localhost:8000/api/update-role/'+r_id,{id: r_id, role: r_role, desc: r_desc})
+            .then((response) => {
+                // console.log(response);
+                alert(response.data.message);
+                document.location.reload();
+
+            })
+        }
     }
 }
+    // $('#role').modal(options)
 </script>
+<style scoped>
+    #show-modal {
+        border: none;
+        font-weight: bold;
+        color: teal;
+    }
+</style>
+

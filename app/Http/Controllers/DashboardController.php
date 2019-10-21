@@ -33,6 +33,18 @@ class DashboardController extends Controller
         return response()->json($role);
     }
     
+    public function allUsers()
+    {
+        // dd(User::all());
+        return view('users');
+    }
+    
+    public function allUsersApi()
+    {
+        $users = User::all();
+        return response()->json($users);
+    }
+    
     public function addRole(Request $request)
     {
         $role = new Role();
@@ -42,13 +54,15 @@ class DashboardController extends Controller
         return response()->json(['message' => 'Add Role Successful']);
     }
     
-    // public function updateRole(Request $request)
-    // {
-    //     $role = new Role();
-    //     $role->role = $request->role;
-    //     $role->description = $request->description;
-    //     $role->save();
-    //     return response()->json(['message' => 'Add Role Successful']);
-    // }
+    public function updateRole(Request $request, $id)
+    {   
+        $role = Role::where('id', $id)->first();
+        $role->role = $request->get('role');
+        $role->description = $request->get('desc');
+        $role->save();
+        return response()->json(['message' => 'Updated Role Successful']);
+        // return response()->json([$request->all()]);
+    }
+
 
 }

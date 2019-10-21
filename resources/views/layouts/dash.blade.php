@@ -44,7 +44,8 @@
                     <ul>
                         <li><a href="/user/roles" class="{{ (request()->is('user/roles')) ? 'text-success' : '' }}">Roles</a></li>
                         {{-- <li><a href="/user/roles">Roles</a></li> --}}
-                        <li><a href="users">Users</a></li>
+                        <li><a href="/all-users" class="{{ (request()->is('/all-users')) ? 'text-success' : '' }}">Users</a></li>
+                        {{-- <li><a href="/all-users">Users</a></li> --}}
                     </ul>
                 </div>
 
