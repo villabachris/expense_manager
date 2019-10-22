@@ -30,5 +30,15 @@ class CategoryController extends Controller
         return response()->json($categories);
 
     }
+    public function updateCategory(Request $request, $id)
+    {
+        $category = Category::where('id', $id)->first();
+        $category->category = $request->get('category');
+        $category->description = $request->get('desc');
+        $category->save();
+
+        return response()->json(['message' => 'Updating Category Successfully!']);
+
+    }
 
 }

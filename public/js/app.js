@@ -53529,7 +53529,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.put('http://localhost:8000/api/update-category/' + id, {
                 category: category,
                 desc: desc }).then(function (response) {
-                console.log(response.data);
+                alert(response.data.message);
+                document.location.reload();
             });
         }
     }

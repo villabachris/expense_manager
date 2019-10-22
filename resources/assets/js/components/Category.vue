@@ -87,7 +87,8 @@ export default {
                 category: category,
                 desc: desc,})
             .then((response) => {
-                console.log(response.data);
+                alert(response.data.message);
+                document.location.reload();
             })
         }
     }
