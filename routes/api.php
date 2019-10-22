@@ -22,3 +22,4 @@ Route::post('/add-user/new', 'DashboardController@addUserApi');
 Route::post('/add-role', 'DashboardController@addRole');
 Route::get('/all-roles/id', 'DashboardController@allRolesIdApi');
 Route::put('/update-role/{id}', 'DashboardController@updateRole');
+Route::put('/update-user/{id}', 'DashboardController@updateUser');

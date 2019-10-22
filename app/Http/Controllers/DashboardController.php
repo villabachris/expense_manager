@@ -58,7 +58,7 @@ class DashboardController extends Controller
         $user->role_id = $request->role;
         $user->save();
 
-        return response()->json(['message' => 'Successfully Adding User']);
+        return response()->json(['message' => 'Adding User Successfully!']);
     }
 
     public function allRolesIdApi()
@@ -73,7 +73,7 @@ class DashboardController extends Controller
         $role->role = $request->role;
         $role->description = $request->description;
         $role->save();
-        return response()->json(['message' => 'Add Role Successful']);
+        return response()->json(['message' => 'Add Role Successfully!']);
     }
     
     public function updateRole(Request $request, $id)
@@ -82,7 +82,19 @@ class DashboardController extends Controller
         $role->role = $request->get('role');
         $role->description = $request->get('desc');
         $role->save();
-        return response()->json(['message' => 'Updated Role Successful']);
+        return response()->json(['message' => 'Updated Role Successfully!']);
+        // return response()->json([$request->all()]);
+    }
+
+    public function updateUser(Request $request, $id)
+    {   
+        $user = User::where('id', $id)->first();
+        $user->name = $request->get('name');
+        $user->username = $request->get('username');
+        $user->email = $request->get('email');
+        $user->role_id = $request->get('role');
+        $user->save();
+        return response()->json(['message' => 'Updated User Successfully!']);
         // return response()->json([$request->all()]);
     }
 
