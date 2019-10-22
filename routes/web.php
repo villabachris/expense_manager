@@ -14,6 +14,7 @@
 
 Route::get('/', 'LoginController@index');
 Route::get('/dashboard', 'DashboardController@index');
+Route::get('/expense/management', 'CategoryController@showCategory');
 Route::get('/user/roles', 'DashboardController@roles');
 Route::get('/all/users', 'DashboardController@allUsers');
 Route::post('/register', 'LoginController@register');

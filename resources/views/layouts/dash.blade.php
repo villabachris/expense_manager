@@ -50,7 +50,7 @@
                 <div class="container"> 
                     <h5>Expense Management</h5>
                     <ul>
-                        <li><a href="#">Expense Categories</a></li>
+                        <li><a href="/expense/management">Expense Categories</a></li>
                         <li><a href="#">Expenses</a></li>
                     </ul>
                 </div>
