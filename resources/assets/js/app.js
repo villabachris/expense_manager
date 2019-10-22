@@ -21,6 +21,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('add-role', require('./components/AddRole.vue'));
 Vue.component('user-roles', require('./components/UserRoles.vue'));
 Vue.component('all-users', require('./components/Users.vue'));
+Vue.component('add-user', require('./components/AddUser.vue'));
 const app = new Vue({
     el: '#app',
     store

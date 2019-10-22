@@ -47,6 +47,25 @@ class DashboardController extends Controller
         ->rightJoin('users', 'roles.id', '=', 'users.role_id')->get();
         return response()->json($users);
     }
+
+    public function addUserApi(Request $request)
+    {
+        $user = new User();
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->role_id = $request->role;
+        $user->save();
+
+        return response()->json(['message' => 'Successfully Adding User']);
+    }
+
+    public function allRolesIdApi()
+    {
+        $rolesId = Role::all();
+        return response()->json($rolesId);
+    }
     
     public function addRole(Request $request)
     {

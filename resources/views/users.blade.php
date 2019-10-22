@@ -7,6 +7,7 @@
     <div>
         <div class="container col-md-6 mt-5">
         <all-users></all-users>
+        <add-user></add-user>
         </div>
     </div>
 @endsection
