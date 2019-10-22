@@ -38,7 +38,8 @@
                         <span class="h3">Dashboard<span>
                     </a>
                 </div>
-
+                
+                @if(Auth::user()->role_id == 1) 
                 <div class="container mt-5 mb-5">
                     <h5>User Management</h5>
                     <ul>
@@ -46,6 +47,7 @@
                         <li><a href="/all/users" class="{{ (request()->is('/all-users')) ? 'text-success' : '' }}">Users</a></li>
                     </ul>
                 </div>
+                @endif
 
                 <div class="container"> 
                     <h5>Expense Management</h5>

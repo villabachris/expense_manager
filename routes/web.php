@@ -19,3 +19,4 @@ Route::get('/user/roles', 'DashboardController@roles');
 Route::get('/all/users', 'DashboardController@allUsers');
 Route::post('/register', 'LoginController@register');
 Route::post('/login', 'LoginController@login');
+Route::get('/logout', 'LoginController@logout');
