@@ -21,10 +21,10 @@
 </head>
 <body>
     <div class="row" style="height:100vh;">
-        <div class="col-md-2 bg-secondary">
+        <div class="col-md-2" id="side-dash">
 
             <div class="mt-5 mb-5">
-                <img src="" alt="">
+                <img class="img-fluid" src="{{url('/images/user-logo.png')}}">
             </div>
             <div class="container text-center">
                 <h6 class="">Welcome!</h6>
@@ -70,6 +70,9 @@
 </body>
 </html>
 <style>
+    #side-dash{
+        background-color: #37aad7;
+    }
     ul{
         list-style-type: none;
     }
