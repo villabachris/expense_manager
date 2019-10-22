@@ -53494,20 +53494,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -53516,7 +53502,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            categories: []
+            categories: [],
+            showModal: false,
+            catVal: function catVal(val_id, val_category, val_description) {
+                this.c_id = val_id;
+                this.c_category = val_category;
+                this.c_desc = val_description;
+            }
         };
     },
 
@@ -53527,6 +53519,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.categories = response.data;
             console.log(response.data);
         });
+    },
+    methods: {
+        categoryUpdate: function categoryUpdate() {
+            var id = document.getElementById('id').value;
+            var category = document.getElementById('category').value;
+            var desc = document.getElementById('desc').value;
+
+            axios.put('http://localhost:8000/api/update-category/' + id, {
+                category: category,
+                desc: desc }).then(function (response) {
+                console.log(response.data);
+            });
+        }
     }
     // $('#role').modal(options)
 
@@ -53541,15 +53546,144 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _vm.showModal
+      ? _c(
+          "div",
+          {
+            staticClass: "modal fade",
+            attrs: { id: "updateUser", tabindex: "-1", role: "dialog" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "modal-title",
+                        attrs: { id: "exampleModalLabel" }
+                      },
+                      [_vm._v("Update Category")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "close",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            _vm.showModal = false
+                          }
+                        }
+                      },
+                      [_c("span", [_vm._v("×")])]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: { type: "hidden", id: "id", disabled: "" },
+                      domProps: { value: this.c_id }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "input-group input-group-sm mb-3" },
+                      [
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "text", required: "", id: "category" },
+                          domProps: { value: this.c_category }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "input-group input-group-sm mb-3" },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: { type: "text", id: "desc", required: "" },
+                          domProps: { value: this.c_desc }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.categoryUpdate()
+                          }
+                        }
+                      },
+                      [_vm._v("Update")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            _vm.showModal = false
+                          }
+                        }
+                      },
+                      [_vm._v("close")]
+                    )
+                  ])
+                ])
+              ]
+            )
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
     _c("div", [
       _c("table", { staticClass: "table table-striped" }, [
-        _vm._m(0),
+        _vm._m(2),
         _vm._v(" "),
         _c(
           "tbody",
           _vm._l(_vm.categories, function(cat) {
             return _c("tr", { key: cat.id }, [
-              _c("td", [_vm._v(_vm._s(cat.category))]),
+              _c("td", [
+                _c(
+                  "span",
+                  {
+                    staticClass: "btn btn-default",
+                    attrs: {
+                      id: "show-modal",
+                      "data-toggle": "modal",
+                      "data-target": "#updateUser"
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.showModal = true
+                        _vm.catVal(cat.id, cat.category, cat.description)
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(cat.category))]
+                )
+              ]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(cat.description))]),
               _vm._v(" "),
@@ -53563,6 +53697,22 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("Category")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("Description")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

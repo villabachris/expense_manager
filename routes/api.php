@@ -25,3 +25,4 @@ Route::post('/add-role', 'DashboardController@addRole');
 Route::get('/all-roles/id', 'DashboardController@allRolesIdApi');
 Route::put('/update-role/{id}', 'DashboardController@updateRole');
 Route::put('/update-user/{id}', 'DashboardController@updateUser');
+Route::put('/update-category/{id}', 'CategoryController@updateCategory');
