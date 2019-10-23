@@ -56,8 +56,8 @@
             </tr>
             <tbody>
                 <tr v-for="exp in expenses" v-bind:key="exp.id">
-                    <td>{{ exp.category.category }}</td>
-                    <td><span>Php</span> {{ exp.amount.toFixed(2) }}</td>
+                    <td>{{ exp.category }}</td>
+                    <td><span>Php</span> {{ exp.total.toFixed(2) }}</td>
                 </tr>
             </tbody>
         </table>

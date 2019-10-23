@@ -54942,11 +54942,11 @@ var render = function() {
           "tbody",
           _vm._l(_vm.expenses, function(exp) {
             return _c("tr", { key: exp.id }, [
-              _c("td", [_vm._v(_vm._s(exp.category.category))]),
+              _c("td", [_vm._v(_vm._s(exp.category))]),
               _vm._v(" "),
               _c("td", [
                 _c("span", [_vm._v("Php")]),
-                _vm._v(" " + _vm._s(exp.amount.toFixed(2)))
+                _vm._v(" " + _vm._s(exp.total.toFixed(2)))
               ])
             ])
           }),

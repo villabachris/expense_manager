@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Expense;
 use Auth;
+use DB;
 
 class ExpenseController extends Controller
 {
@@ -40,7 +41,13 @@ class ExpenseController extends Controller
     
     public function summaryExpenses()
     {
-        $expenses = Expense::with('category')->get();        
+        $expenses = DB::table('expenses')
+        ->join('categories', 'categories.id', '=', 'expenses.category_id')
+        ->select('user_id','categories.category', DB::raw('SUM(amount) as total'))
+        ->groupBy('categories.category')
+        ->groupBy('user_id')
+        ->distinct()
+        ->get();       
         return response()->json($expenses);
     }
 }
