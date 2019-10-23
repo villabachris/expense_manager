@@ -24,6 +24,8 @@ Vue.component('all-users', require('./components/Users.vue'));
 Vue.component('add-user', require('./components/AddUser.vue'));
 Vue.component('all-categories', require('./components/Category.vue'));
 Vue.component('add-category', require('./components/AddCategory.vue'));
+Vue.component('all-expenses', require('./components/Expense.vue'));
+Vue.component('add-expense', require('./components/AddExpense.vue'));
 const app = new Vue({
     el: '#app',
     store

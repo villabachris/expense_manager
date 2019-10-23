@@ -17,6 +17,9 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script> window.Laravel = { csrfToken : '{ csrf_token() }'}</script>
+    @if(Auth::check())
+        <meta name="user_id" content="{{Auth::user()->id}}">
+    @endif
     <title>Dashboard</title>
 </head>
 <body>
@@ -53,7 +56,7 @@
                     <h5>Expense Management</h5>
                     <ul>
                         <li><a href="/expense/management">Expense Categories</a></li>
-                        <li><a href="#">Expenses</a></li>
+                        <li><a href="/expense">Expenses</a></li>
                     </ul>
                 </div>
             </div>

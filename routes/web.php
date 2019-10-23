@@ -20,3 +20,4 @@ Route::get('/all/users', 'DashboardController@allUsers');
 Route::post('/register', 'LoginController@register');
 Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
+Route::get('/expense', 'ExpenseController@index');

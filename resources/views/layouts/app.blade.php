@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <meta name="user_id" content="{{Auth::user()->id}}">
 </head>
 <body>
     <div id="app">

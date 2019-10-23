@@ -26,3 +26,6 @@ Route::get('/all-roles/id', 'DashboardController@allRolesIdApi');
 Route::put('/update-role/{id}', 'DashboardController@updateRole');
 Route::put('/update-user/{id}', 'DashboardController@updateUser');
 Route::put('/update-category/{id}', 'CategoryController@updateCategory');
+Route::get('/category/get', 'ExpenseController@getCategory');
+Route::get('/expenses/all', 'ExpenseController@getExpenses');
+Route::post('/add-expense/new', 'ExpenseController@newExpense');
