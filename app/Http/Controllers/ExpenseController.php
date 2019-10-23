@@ -34,7 +34,7 @@ class ExpenseController extends Controller
 
     public function getExpenses()
     {
-        $expenses = Expense::all();        
+        $expenses = Expense::with('category')->get();        
         return response()->json($expenses);
     }
 }

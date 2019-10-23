@@ -52,13 +52,13 @@
         <table class="table table-striped">
             <tr>
                 <th>Display Name</th>
-                <th>Description</th>
+                <th>Amount</th>
                 <th>Created at</th>
             </tr>
             <tbody>
                 <tr v-for="exp in expenses" v-bind:key="exp.id">
-                    <td>{{ exp.category_id }}</td>
-                    <td>{{ exp.amount }}</td>
+                    <td>{{ exp.category.category }}</td>
+                    <td><span>Php</span> {{ exp.amount.toFixed(2) }}</td>
                     <td>{{ exp.created_at }}</td>
                 </tr>
             </tbody>

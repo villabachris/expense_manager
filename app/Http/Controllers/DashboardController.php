@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\Expense;
+use App\Category;
 use DB;
 
 class DashboardController extends Controller
@@ -13,6 +15,7 @@ class DashboardController extends Controller
     {
         // dd('hello');
         // dd($user_rname->roles);
+        // dd(Expense::with('category')->get());
         return view('dashboard');
     }
     
