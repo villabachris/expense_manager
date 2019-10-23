@@ -37,4 +37,10 @@ class ExpenseController extends Controller
         $expenses = Expense::with('category')->get();        
         return response()->json($expenses);
     }
+    
+    public function summaryExpenses()
+    {
+        $expenses = Expense::with('category')->get();        
+        return response()->json($expenses);
+    }
 }

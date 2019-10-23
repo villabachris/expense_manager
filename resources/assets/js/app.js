@@ -18,6 +18,7 @@ import store from './store/index'
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('my-expenses', require('./components/Dashboard.vue'));
 Vue.component('add-role', require('./components/AddRole.vue'));
 Vue.component('user-roles', require('./components/UserRoles.vue'));
 Vue.component('all-users', require('./components/Users.vue'));

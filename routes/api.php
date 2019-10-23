@@ -28,4 +28,5 @@ Route::put('/update-user/{id}', 'DashboardController@updateUser');
 Route::put('/update-category/{id}', 'CategoryController@updateCategory');
 Route::get('/category/get', 'ExpenseController@getCategory');
 Route::get('/expenses/all', 'ExpenseController@getExpenses');
+Route::get('/expenses/summary', 'ExpenseController@summaryExpenses');
 Route::post('/add-expense/new', 'ExpenseController@newExpense');
