@@ -42,12 +42,17 @@ class ExpenseController extends Controller
     public function summaryExpenses()
     {
         $expenses = DB::table('expenses')
-        ->join('categories', 'categories.id', '=', 'expenses.category_id')
-        ->select('user_id','categories.category', DB::raw('SUM(amount) as total'))
+        ->join('categories', 'categories.id', '=', 'expenses.category_id');
+        
+        $sum = $expenses->select(DB::raw('SUM(amount) as total'))
+        ->get();
+        
+        $totalCat = $expenses->select('user_id','categories.category', DB::raw('SUM(amount) as total'))
         ->groupBy('categories.category')
         ->groupBy('user_id')
-        ->distinct()
-        ->get();       
-        return response()->json($expenses);
+        ->distinct()->get();
+        
+        
+        return response()->json(['total' => $totalCat , 'sum' => $sum]);
     }
 }

@@ -57,7 +57,11 @@
             <tbody>
                 <tr v-for="exp in expenses" v-bind:key="exp.id">
                     <td>{{ exp.category }}</td>
-                    <td><span>Php</span> {{ exp.total.toFixed(2) }}</td>
+                    <td>{{ exp.total | currency }}</td>
+                </tr>
+                <tr>
+                    <td><h5 class="text-right"> Total: </h5></td>
+                    <td>{{ sum | currency }}</td>
                 </tr>
             </tbody>
         </table>
@@ -67,6 +71,7 @@
 
 <script>
 
+
 export default {
     mounted() {
         console.log('Component mounted.')
@@ -74,16 +79,20 @@ export default {
 data() {
     return {
        expenses: [],
+       sum: '',
     }
 },
 created: function() {
     axios.get('http://localhost:8000/api/expenses/summary')
     .then((response) => {
-        this.expenses = response.data;
-        console.log(response.data);
+        this.expenses = response.data.total;
+        this.sum = JSON.stringify(response.data.sum);
+        console.log(response.data.total);
+        console.log(response.data.sum);
     })
 },
 methods: {
+            
     }
 }
     // $('#role').modal(options)

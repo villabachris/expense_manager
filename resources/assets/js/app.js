@@ -9,6 +9,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VueCurrencyFilter from 'vue-currency-filter';
 import store from './store/index'
 
 /**
@@ -16,6 +17,15 @@ import store from './store/index'
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+Vue.use(VueCurrencyFilter,
+    {
+    symbol : 'Php',
+    thousandsSeparator: ',',
+    fractionCount: 2,
+    fractionSeparator: '.',
+    symbolPosition: 'front',
+    symbolSpacing: true
+    });
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('my-expenses', require('./components/Dashboard.vue'));
