@@ -10,7 +10,9 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import VueCurrencyFilter from 'vue-currency-filter';
-import store from './store/index'
+import store from './store/index';
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -37,6 +39,7 @@ Vue.component('all-categories', require('./components/Category.vue'));
 Vue.component('add-category', require('./components/AddCategory.vue'));
 Vue.component('all-expenses', require('./components/Expense.vue'));
 Vue.component('add-expense', require('./components/AddExpense.vue'));
+Vue.component('bar-chart', require('./components/BarChart.vue'));
 const app = new Vue({
     el: '#app',
     store

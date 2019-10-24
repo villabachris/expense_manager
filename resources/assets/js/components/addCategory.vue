@@ -61,6 +61,7 @@ export default {
             })
             .then((response)=>{
                 console.log(response.data.message);
+                document.location.reload();
                 // location.href="/user/roles";
             })
             .catch((err) => {

@@ -12,7 +12,7 @@
                     <my-expenses></my-expenses>
                 </div>
                 <div class="col-md-8">
-
+                    <bar-chart></bar-chart>
                 </div>
             </div>
         </div>

@@ -71,6 +71,7 @@ export default {
         axios.get('http://localhost:8000/api/category/get')
         .then((response) => {
             this.category = response.data;
+            document.location.reload()
             // console.log(response.data);
         })
     },

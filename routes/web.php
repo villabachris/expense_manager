@@ -21,3 +21,4 @@ Route::post('/register', 'LoginController@register');
 Route::post('/login', 'LoginController@login');
 Route::get('/logout', 'LoginController@logout');
 Route::get('/expense', 'ExpenseController@index');
+Route::get('/expense-chart', 'ExpenseController@expenseChart');

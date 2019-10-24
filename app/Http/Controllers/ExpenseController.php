@@ -46,7 +46,7 @@ class ExpenseController extends Controller
         
         $sum = $expenses->select(DB::raw('SUM(amount) as total'))
         ->get();
-        
+
         $totalCat = $expenses->select('user_id','categories.category', DB::raw('SUM(amount) as total'))
         ->groupBy('categories.category')
         ->groupBy('user_id')
@@ -54,5 +54,17 @@ class ExpenseController extends Controller
         
         
         return response()->json(['total' => $totalCat , 'sum' => $sum]);
+    }
+
+    public function expenseChart()
+    {
+        $chart = DB::table('expenses')
+        ->join('categories', 'categories.id', '=', 'expenses.category_id')
+        ->select('user_id','categories.category', DB::raw('SUM(amount) as total'))
+        ->groupBy('categories.category')
+        ->groupBy('user_id')
+        ->distinct()->get();
+
+        return response()->json($chart);
     }
 }
